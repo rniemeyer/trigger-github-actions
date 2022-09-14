@@ -1,0 +1,12 @@
+name: Dispatch Testing
+
+on:
+  repository_dispatch:
+    types: [log_payload]
+
+jobs:
+  Log-payload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log context
+        run: echo '${{ toJSON(github.event.client_payload) }}'
